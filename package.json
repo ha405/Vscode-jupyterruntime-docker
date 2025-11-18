@@ -1,0 +1,81 @@
+{
+  "name": "jupyter-docker-runtime",
+  "displayName": "Jupyter Docker Runtime",
+  "description": "Automatically run Jupyter notebooks in Docker containers with zero configuration",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Notebooks",
+    "Data Science"
+  ],
+  "activationEvents": [
+    "onNotebook:jupyter-notebook",
+    "onLanguage:jupyter"
+  ],
+  "main": "./src/out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jupyter-docker.rebuildContainer",
+        "title": "Jupyter Docker: Rebuild Container"
+      },
+      {
+        "command": "jupyter-docker.stopContainer",
+        "title": "Jupyter Docker: Stop Container"
+      },
+      {
+        "command": "jupyter-docker.selectKernel",
+        "title": "Jupyter Docker: Select Kernel"
+      }
+    ],
+    "configuration": {
+      "title": "Jupyter Docker Runtime",
+      "properties": {
+        "jupyterDocker.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start Docker container when opening notebooks"
+        },
+        "jupyterDocker.dockerfilePath": {
+          "type": "string",
+          "default": "Dockerfile",
+          "description": "Path to Dockerfile relative to workspace root"
+        },
+        "jupyterDocker.containerName": {
+          "type": "string",
+          "default": "jupyter-runtime",
+          "description": "Name for the Docker container"
+        },
+        "jupyterDocker.pythonPath": {
+          "type": "string",
+          "default": "/usr/local/bin/python3",
+          "description": "Python path inside container"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./src",
+    "watch": "tsc -watch -p ./src",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@types/dockerode": "^2.5.0",
+    "@types/tar-stream": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "dockerode": "^4.0.2",
+    "tar-stream": "^3.1.6"
+  }
+}

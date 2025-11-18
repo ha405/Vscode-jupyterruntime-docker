@@ -1,0 +1,29 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# VS Code
+.vscode/
+.vscode-test/
+
+# Build output
+src/out/
+out/
+
+# Logs
+logs/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VSIX and packaging
+*.vsix
+.vscodeignore
+
+# Env
+.env
