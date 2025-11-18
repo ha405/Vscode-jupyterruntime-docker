@@ -16,7 +16,7 @@ npm run compile
 Press `F5` in VS Code to launch the extension in a new window, or manually run:
 
 ```powershell
-code --extensionDevelopmentPath=. .
+code --extensionDevelopmentPath="PATH_WHERE_CLONED" --verbose
 ```
 
 ### 3. Test with the Notebook
