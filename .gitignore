@@ -6,7 +6,7 @@ yarn-error.log*
 package-lock.json
 
 # VS Code
-.vscode/
+# .vscode/
 .vscode-test/
 
 # Build output

@@ -1,0 +1,6 @@
+{
+  "jupyterDocker.autoStart": true,
+  "jupyterDocker.dockerfilePath": "Dockerfile",
+  "jupyterDocker.containerName": "jupyter-runtime",
+  "jupyterDocker.pythonPath": "/usr/local/bin/python3"
+}
