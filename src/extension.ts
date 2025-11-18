@@ -6,13 +6,17 @@ let dockerManager: DockerManager;
 let kernelProvider: DockerKernelProvider;
 
 export async function activate(context: vscode.ExtensionContext) {
-    console.log('Jupyter Docker Runtime extension activated');
+    console.log('Jupyter Docker Runtime extension activating');
+    try {
+        console.log('Initializing DockerManager and DockerKernelProvider');
 
-    // Initialize Docker manager
-    dockerManager = new DockerManager(context);
-    
-    // Initialize kernel provider
-    kernelProvider = new DockerKernelProvider(dockerManager, context);
+        // Initialize Docker manager
+        dockerManager = new DockerManager(context);
+        console.log('DockerManager created');
+        
+        // Initialize kernel provider
+        kernelProvider = new DockerKernelProvider(dockerManager, context);
+        console.log('DockerKernelProvider created');
 
     // Register kernel provider
     context.subscriptions.push(
@@ -72,6 +76,14 @@ export async function activate(context: vscode.ExtensionContext) {
     const notebooks = vscode.workspace.notebookDocuments;
     if (notebooks.length > 0) {
         await ensureContainerRunning();
+    }
+    } catch (err) {
+        console.error('Extension activation error:', err);
+        try {
+            vscode.window.showErrorMessage(`Extension activation failed: ${err}`);
+        } catch (e) {
+            // ignore UI errors during early activation
+        }
     }
 }
 
